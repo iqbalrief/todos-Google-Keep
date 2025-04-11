@@ -9,10 +9,13 @@ const saveToken = async (req, res, next) => {
     const token = authHeader.split(' ')[1];
   
     try {
-      const decoded = jwt.verify(token, JWT_SECRET);
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      console.log(decoded);
+      
       req.user = decoded;
       next();
     } catch (err) {
+      console.error('JWT Verify Error:', err.message);
       return res.status(403).json({ error: 'Invalid token' });
     }
   };

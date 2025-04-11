@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 }
 checklist.init({
+  userId: DataTypes.INTEGER,
   name: DataTypes.STRING
 }, {
   sequelize,

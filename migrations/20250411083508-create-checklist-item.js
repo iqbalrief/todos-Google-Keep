@@ -15,6 +15,17 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
+      checklistId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'checklists',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

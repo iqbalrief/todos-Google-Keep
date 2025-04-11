@@ -4,11 +4,11 @@ const{checklist} = require("../models");
 const create = async (req, res) => {
   try {
     const { name } = req.body;
-    const checklist = await checklist.create({
+    const newChecklist = await checklist.create({
       name,
       userId: req.user.id,
     });
-    res.status(201).json(checklist);
+    res.status(201).json(newChecklist);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
